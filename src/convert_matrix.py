@@ -10,12 +10,15 @@ parser = argparse.ArgumentParser(
 # parser.add_argument('--test', help='Run in test mode.',
 #                    action="store_true")  # Not doing anything with this yet.
 parser.add_argument("input_file", help="path to feather file to use as input")
-parser.add_argument("row_db", help="identifier (short_form) of DB (AKA site node) for row identifiers (accessions).")
-parser.add_argument("column_db",
+requiredNamed = parser.add_argument_group('required named arguments')
+requiredNamed.add_argument("--row_db", required=True,
+                    help="identifier (short_form) of DB (AKA site node) for row identifiers (accessions).")
+requiredNamed.add_argument("--column_db", required=True,
                     help="identifier (short_form) of DB (AKA site node) for column identifiers (accessions).")
-parser.add_argument("cutoff", type=float, help="threshold above which NBLAST scores are retained in the matrix.")
+requiredNamed.add_argument("--cutoff", required=True, type=float,
+                    help="Threshold above which NBLAST scores are retained in the matrix.")
 parser.add_argument("--output_format", "-f", default='feather', help="Output format. Must be feather, tsv or robot")
-parser.add_argument("output_file", help="Name of output file")
+requiredNamed.add_argument("--output_file", "-o", required=True, help="Output filepath")
 args = parser.parse_args()
 
 if not (args.output_format in ['feather', 'robot', 'tsv']):
