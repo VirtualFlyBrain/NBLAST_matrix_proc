@@ -2,3 +2,4 @@ vfb_connect
 feather-format
 pandas
 numpy
+requests
