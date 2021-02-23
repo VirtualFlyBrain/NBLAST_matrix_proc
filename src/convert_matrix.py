@@ -52,7 +52,7 @@ input_matrix = feather.read_dataframe(args.input_file)
 input_matrix.set_index('index', inplace=True)  # Is this consistent between datasets?
 
 # Get external ID to VFB ID lookups
-vc = VfbConnect()
+vc = VfbConnect(neo_endpoint='http://kb.virtualflybrain.org')
 row_lookup = vc.neo_query_wrapper.xref_2_vfb_id(db=args.row_db)
 column_lookup = vc.neo_query_wrapper.xref_2_vfb_id(db=args.column_db)
 
