@@ -3,3 +3,4 @@ feather-format
 pandas
 numpy
 requests
+urllib3>=2.2.2 # not directly required, pinned by Snyk to avoid a vulnerability
